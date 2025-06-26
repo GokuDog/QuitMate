@@ -4,6 +4,7 @@ An interactive AI-Based tool called QuitMate that helps students quit vaping by 
 Contributors: Anshdeep Singh, Abhinav Pandey, Kartik Chaudhary
 
 Class: XII
+
 School: The Maurya School
 
 # Required Libraries:
