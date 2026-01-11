@@ -25,7 +25,6 @@ model.fit(X, y)
 
 # Step 3: Motivation messages
 
-
 def get_motivation(reason):
     if reason == "stress":
         return "You're stronger than your cravings. Take deep breaths and keep pushing forward."
@@ -37,6 +36,7 @@ def get_motivation(reason):
         return "Habits can be broken — and you're already doing it!"
     else:
         return "Whatever the reason, your health and goals matter more!"
+
 
 # Step 4: Tracking and Prediction
 
@@ -64,10 +64,14 @@ def run_quitmate_day():
     # 4. Previous Day Status
     prev_vaped = int(input("Did you vape yesterday? (1 = Yes, 0 = No): "))
 
-    # 5. Predict Today
-    input_data = np.array([[stress, trigger, prev_vaped]])
-    prediction_prob = model.predict_proba(input_data)[0][1]  # Probability of vaping
-    prediction = model.predict(input_data)[0]  # 0 or 1
+    # 5. Predict Today 
+    input_data = pd.DataFrame(
+        [[stress, trigger, prev_vaped]],
+        columns=X.columns
+    )
+
+    prediction_prob = model.predict_proba(input_data)[0][1]
+    prediction = model.predict(input_data)[0]
 
     # 6. Update Streak
     if prediction == 1:
